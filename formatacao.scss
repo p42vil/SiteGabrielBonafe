@@ -1,0 +1,276 @@
+/* Funções Sass */
+@use 'sass:math';
+
+/* Estados da animação */
+@keyframes fadeInFromUp{
+    from {
+        opacity: 0;
+        bottom: 30px;
+        
+    }
+    to {
+        opacity: 1;
+        bottom: 0px;
+    }
+}
+
+/* Animar Fade In de quando entra no site */
+@mixin animateFadeInFromUp(){
+    opacity: 0;
+    position: relative;
+    animation-name: fadeInFromUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards
+}
+
+/* Todas as Seções */
+@for $i from 1 to 8{
+    $val_: math.div($i, 2);
+
+    #section#{$i}{
+        /* Seção de background branco */
+        //@if math.round($val_) != $val_{
+            background-color: #eeeeee;
+            color: #1c2b1b;
+
+            button{
+                border-color: #115b2a;
+                background-color: #115b2a;
+                color: white;
+            }
+            p, li{
+                font-weight: 500;
+            }
+            .border{
+                border-color: #115b2a !important;
+                border-width: 2px !important;
+            }
+            hr{
+                background-color: #115b2a;
+                border-width: 3px;
+            }
+            a{
+                background-color: #115b2a;
+
+                &:hover{
+                    text-decoration: none;
+                
+                    div{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        //}
+        /* --------------------- */
+        /*@else{
+            background-color: #115b2a;
+            color: #d9d9d9;
+
+            hr{
+                width: 450px;
+                height: 1px;
+                background-color: #d9d9d971;
+            }
+        }*/
+    }
+}
+
+/* Hr padrão */
+hr{
+    background-color: #115b2a;
+    border-width: 6px;
+}
+
+/* Header e Footer */
+header, footer{
+    background: #212B16;
+    background: -webkit-linear-gradient(90deg,rgba(33, 43, 22, 1) 0%, rgba(17, 91, 42, 1) 100%);
+    background: -moz-linear-gradient(90deg,rgba(33, 43, 22, 1) 0%, rgba(17, 91, 42, 1) 100%);
+    background: linear-gradient(90deg,rgba(33, 43, 22, 1) 0%, rgba(17, 91, 42, 1) 100%);
+    color: #d9d9d9;
+
+    hr{
+        background-color: #d9d9d971;
+    }
+    a{
+        color: #d9d9d9 !important;
+
+        &:hover{
+            text-decoration: none;
+        }
+        div:hover{
+            text-decoration: underline;
+        }
+    }
+
+    .dropdown-menu{
+        background-color: #115b2a;
+    }
+    .dropdown-item{
+        color: #d9d9d9 !important;
+        font-weight: 500;
+    }
+    .dropdown-item:hover{
+        color: #115b2a !important;
+        background-color: #d9d9d9;
+    }
+    .dropdown-item:active{
+        color: #d9d9d9 !important;
+        background-color: #1c2b1b;
+    }
+}
+
+/* Seção 1 */
+#section1{
+    background: -webkit-gradient(circle, #d8d8d8 0%, #d8d8d8 69%, #96a19a 97%, #6f7c73 100%);
+    background: radial-gradient(circle, #d8d8d8 0%, #d8d8d8 69%, #96a19a 97%, #6f7c73 100%);
+    @media (min-width: 0px) {
+        min-height: 700px;
+    }
+    @media (min-width: 768px) {
+        min-height: 830px;
+    }
+}
+
+#index #section1{
+    h4, h3, h1, i, p, a{
+        @include animateFadeInFromUp();
+    }
+
+    @media (min-width: 0px) {
+        h1 {
+            font-size: 35px;
+        }
+        h3, h4 {
+            font-size: 22px;
+        }
+    }
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 50px;
+        }
+        h3, h4 {
+            font-size: 30px;
+        }
+    }
+
+    i{
+        color: #115b2a;
+        animation-delay: 0.3s;
+    }
+    p{
+        animation-delay: 0.3s;
+    }
+    a{
+        animation-delay: 0.2s;
+    }
+}
+
+/* Seção 3 */
+#section3{
+    .quadrado{
+        width: 230px;
+        height: 230px;
+    }
+    hr{
+        width: 80px
+    }
+    #hr-final{
+        background-color: #115b2a;
+        width: 400px;
+    }
+}
+
+/* Seção 4 */
+#section4{ 
+    .quadrado{
+        width: 150px;
+        height: 150px;
+    }
+    hr{
+        background: -moz-linear-gradient(left, #115b2a 0%, #115b2a 2%, rgba(142, 197, 142, 0) 90%);
+        background: -webkit-linear-gradient(left, #115b2a 0%,#115b2a 2%,rgba(142, 197, 142, 0) 90%);
+        background: linear-gradient(to right, #115b2a 0%,#115b2a 2%,rgba(142, 197, 142, 0) 90%);
+        height: 4px;
+        width: 350px;
+    }
+}
+
+/* Seção 5 */
+#section5{
+    hr{
+        width: 150px
+    }
+    .etapa{
+        margin-top: 130px;
+    }
+    .border{
+        border-width: 1px !important;
+    }
+}
+
+/* Seção 6 */
+#section6{
+    .pessoa{
+        background-color: #115b2a;
+        max-width: 500px;
+        color: #d9d9d9;
+
+        &.active{ 
+            background-color: #1c2b1b;
+            border-width: 0px !important;
+            border-collapse: separate;
+            box-shadow: 0px 0px 0px 1px #115b2a;
+            color: #d9d9d9;
+        }
+    }
+    #comentario{
+        min-height: 300px;
+        min-width: 350px
+    }
+}
+
+/* Seção 7 */
+#section7{
+    #btn-geral, #btn-conteudos{
+        width: 200px;
+        height: 40px;
+        border-color: transparent;
+        background-color: #2a7242;
+        color: #d9d9d9;
+
+        &:focus{
+            outline: none;
+        }
+        &.active{
+            background-color: #1c2b1b;
+        }
+        &:active, &.active{
+            border-bottom-color: #2a7242;
+            border-width: 3px;        
+        }
+    }
+    hr{
+        border-width: revert;
+        border-color: revert;
+    }
+}
+
+/* Promoções e Novidades*/
+#promocoes, #novidades{
+    hr{
+        background-color: #262e61;
+        border-width: 2px;
+        max-width: 300px    
+    } 
+    .preco-antigo{
+        color: #292628;
+        text-decoration: line-through;
+    }
+}
+
+#novidades{
+    h4, li{
+        text-align: start !important;
+    }
+}
